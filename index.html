@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI项目作品集演示PPT</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+        :root {
+            --dark-blue: #0f2b48;
+            --light-blue: #244b76;
+            --white: #ffffff;
+            --gray-bg: #f5f7fa;
+        }
+        body {
+            overflow: hidden;
+            height: 100vh;
+        }
+        /* 幻灯片容器 */
+        .ppt-wrap {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+        .slide-container {
+            display: flex;
+            width: 500vw;
+            height: 100vh;
+            transition: transform 0.6s ease-in-out;
+        }
+        /* 单张幻灯片样式 */
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            padding: 80px 10%;
+            background: var(--white);
+        }
+        .slide-dark {
+            background-color: var(--dark-blue);
+            color: var(--white);
+        }
+        .slide h1 {
+            font-size: 48px;
+            margin-bottom: 30px;
+        }
+        .slide h2 {
+            font-size: 32px;
+            margin-bottom: 24px;
+            color: var(--dark-blue);
+        }
+        .slide-dark h2 {
+            color: var(--white);
+        }
+        .slide p {
+            font-size: 20px;
+            line-height: 1.8;
+            margin: 16px 0;
+            color: #444;
+        }
+        .slide-dark p {
+            color: #e0e8f2;
+        }
+        .tag-item {
+            display: inline-block;
+            padding: 10px 22px;
+            background: var(--light-blue);
+            color: white;
+            border-radius: 30px;
+            margin: 8px 10px 8px 0;
+            font-size: 18px;
+        }
+        /* 切换按钮 */
+        .btn-prev, .btn-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(15, 43, 72, 0.7);
+            color: white;
+            font-size: 22px;
+            cursor: pointer;
+            z-index: 10;
+        }
+        .btn-prev {
+            left: 30px;
+        }
+        .btn-next {
+            right: 30px;
+        }
+        /* 底部分页圆点 */
+        .dots-box {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 14px;
+            z-index: 10;
+        }
+        .dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #b8c8db;
+            cursor: pointer;
+        }
+        .dot.active {
+            background: var(--dark-blue);
+        }
+        /* 移动端适配 */
+        @media (max-width:768px) {
+            .slide h1 {
+                font-size: 32px;
+            }
+            .slide h2 {
+                font-size: 24px;
+            }
+            .slide p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="ppt-wrap">
+    <div class="slide-container" id="slideBox">
+        <!-- 幻灯片1：封面 -->
+        <div class="slide slide-dark">
+            <h1>AI项目作品集</h1>
+            <h2>大模型应用开发实战演示</h2>
+            <p>专注RAG知识库、AI智能体、静态网站开发</p>
+            <p style="margin-top: 60px;">按键盘 ← → 翻页｜F11 全屏演示</p>
+        </div>
+        <!-- 幻灯片2：个人简介 -->
+        <div class="slide">
+            <h2>个人简介</h2>
+            <p>深耕生成式AI领域，专注大模型落地工程实践</p>
+            <p>擅长：文档知识库、自主AI Agent、前端静态站点搭建</p>
+            <div style="margin-top:30px;">
+                <span class="tag-item">Python开发</span>
+                <span class="tag-item">RAG检索系统</span>
+                <span class="tag-item">AI智能体Skill</span>
+                <span class="tag-item">GitHub Pages</span>
+            </div>
+        </div>
+        <!-- 幻灯片3：项目展示 -->
+        <div class="slide">
+            <h2>核心AI项目</h2>
+            <p>1. 轻量化RAG智能问答工具，解决大模型幻觉问题</p>
+            <p>2. 多功能AI Agent，集成计算器、搜索、文档解析Skill</p>
+            <p>3. AI自动化办公静态网站，一键生成作品集页面</p>
+        </div>
+        <!-- 幻灯片4：技术栈 -->
+        <div class="slide slide-dark">
+            <h2>使用技术栈</h2>
+            <p>大模型：通义千问、Claude、OpenAI Function Call</p>
+            <p>工具框架：LangChain、FastMCP、原生HTML/CSS/JS</p>
+            <p>部署：GitHub Pages、本地MCP服务、云端API调用</p>
+        </div>
+        <!-- 幻灯片5：结尾联系方式 -->
+        <div class="slide">
+            <h2>交流与合作</h2>
+            <p>GitHub：https://861379478.github.io</p>
+            <p>欢迎交流AI开发、智能体搭建、静态网站制作相关内容</p>
+            <p style="margin-top: 80px; color:#0f2b48; font-weight:bold;">演示结束</p>
+        </div>
+    </div>
+    <!-- 翻页按钮 -->
+    <button class="btn-prev" id="prevBtn">&lt;</button>
+    <button class="btn-next" id="nextBtn">&gt;</button>
+    <!-- 底部圆点分页 -->
+    <div class="dots-box" id="dotWrap"></div>
+</div>
+
+<script>
+    // 幻灯片切换逻辑
+    const slideBox = document.getElementById('slideBox');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const dotWrap = document.getElementById('dotWrap');
+    const slideTotal = slideBox.querySelectorAll('.slide').length;
+    let currentIndex = 0;
+
+    // 生成分页圆点
+    for(let i=0; i<slideTotal; i++){
+        const dot = document.createElement('div');
+        dot.className = 'dot';
+        if(i === 0) dot.classList.add('active');
+        dotWrap.appendChild(dot);
+        dot.onclick = () => switchSlide(i);
+    }
+    const dotList = document.querySelectorAll('.dot');
+
+    // 切换幻灯片函数
+    function switchSlide(index){
+        if(index < 0) index = slideTotal - 1;
+        if(index >= slideTotal) index = 0;
+        currentIndex = index;
+        slideBox.style.transform = `translateX(-${currentIndex * 100}vw)`;
+        // 更新圆点激活状态
+        dotList.forEach((dot, idx)=>{
+            dot.classList.toggle('active', idx === currentIndex);
+        })
+    }
+
+    // 按钮点击翻页
+    nextBtn.addEventListener('click', ()=>switchSlide(currentIndex + 1));
+    prevBtn.addEventListener('click', ()=>switchSlide(currentIndex - 1));
+
+    // 键盘左右键翻页
+    document.addEventListener('keydown', (e)=>{
+        if(e.key === 'ArrowRight') switchSlide(currentIndex + 1);
+        if(e.key === 'ArrowLeft') switchSlide(currentIndex - 1);
+    })
+</script>
+</body>
+</html>
